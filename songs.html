@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Chord Detector - Choose Song</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="home.html" class="back-btn">← Back</a>
+        <div class="songs-content">
+            <h1>Choose a Song</h1>
+            <div class="songs-grid">
+                <div class="song-card available" onclick="window.location.href='phase1.html'">
+                    <h3>Wonderwall</h3>
+                    <p>by Oasis</p>
+                    <p>Chords: G, A, C</p>
+                    <span class="status-badge available-badge">Available</span>
+                </div>
+                
+                <div class="song-card disabled">
+                    <h3>Hotel California</h3>
+                    <p>by Eagles</p>
+                    <p>Chords: Am, E, G, D, F, C</p>
+                    <span class="status-badge coming-soon-badge">Coming Soon</span>
+                </div>
+                
+                <div class="song-card disabled">
+                    <h3>Sweet Child O' Mine</h3>
+                    <p>by Guns N' Roses</p>
+                    <p>Chords: D, C, G, A</p>
+                    <span class="status-badge coming-soon-badge">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

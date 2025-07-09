@@ -1,0 +1,585 @@
+/* Universal Box Sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Practice Page Specific Body Style */
+.practice-body {
+    align-items: flex-start;
+    background: #1a1a1a;
+    padding: 20px 0;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* ========== HOME PAGE STYLES ========== */
+.home-content {
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.home-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+/* ========== BUTTON STYLES ========== */
+.btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.start-btn {
+    width: 100%; /* Make button full width in its container */
+    background: linear-gradient(45deg, #667eea, #764ba2); /* Adjusted gradient */
+    color: white;
+    border: none;
+    padding: 20px; /* Larger padding */
+    font-size: 1.3em; /* Larger font */
+    font-weight: bold;
+    border-radius: 25px; /* More rounded */
+    cursor: pointer;
+    margin-bottom: 30px; /* Space below */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.start-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.start-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #666; /* Grey out when disabled */
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* ========== SONGS PAGE STYLES (Existing) ========== */
+.songs-content {
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    margin-top: 60px;
+}
+
+.songs-content h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #FFD700;
+}
+
+.songs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.song-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.song-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.song-card.available {
+    cursor: pointer;
+}
+
+.song-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.song-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #FFD700;
+}
+
+.song-card p {
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.status-badge {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.available-badge {
+    background: #4CAF50;
+    color: white;
+}
+
+.coming-soon-badge {
+    background: #FFA500;
+    color: white;
+}
+
+/* ========== PRACTICE PAGE STYLES ========== */
+#song-info {
+    text-align: center;
+    margin: 40px 0 30px 0; /* Adjusted margin */
+}
+
+#song-title {
+    font-size: 2.5rem;
+    color: #FFD700;
+    margin-bottom: 20px;
+}
+
+.phase-info {
+    background: rgba(76, 175, 80, 0.2);
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.phase-info h3 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.song-progress {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+    /* display: none; */ /* Keep it, but rely more on Guitar Hero timeline */
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+/* Guitar Hero Style Timeline */
+.guitar-hero-timeline {
+    width: 100%;
+    height: 400px; /* Increased height for better falling effect */
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    border-radius: 10px;
+    margin: 20px 0;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.timeline-track {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        #1a1a2e,
+        #1a1a2e 99px,
+        #2c2c4a 100px,
+        #2c2c4a 101px /* Thin horizontal lines for depth */
+    );
+    background-size: 100% 100px;
+}
+
+.chord-highway {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); */
+    overflow: hidden; /* Ensure notes are clipped */
+}
+
+.hit-zone {
+    position: absolute;
+    bottom: 0px; /* Position at the very bottom */
+    left: 0%;
+    width: 100%; /* Make hit zone span full width */
+    height: 60px; /* Height of the hit zone */
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #FFD700; /* Distinct top border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -5px 15px rgba(255, 215, 0, 0.3); /* Glowing effect */
+    z-index: 10; /* Ensure it's above falling notes */
+}
+
+.hit-zone-indicator {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+    opacity: 0.8;
+}
+
+.hit-zone-label {
+    position: absolute;
+    bottom: 5px; /* Label inside the zone */
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Chord Notes Animation */
+.chord-note {
+    position: absolute;
+    width: 80px; /* Increased width */
+    height: 50px; /* Increased height */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3em; /* Larger font */
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    transition: transform 0.1s ease;
+    animation-timing-function: linear; /* Constant speed */
+    animation-name: fall;
+    z-index: 5; /* Ensure notes are above highway but below hit zone */
+}
+
+/* Specific colors for chords */
+.chord-note.g-chord {
+    background: linear-gradient(45deg, #4CAF50, #66BB6A); /* Green */
+    border: 2px solid #2E7D32;
+}
+
+.chord-note.a-chord {
+    background: linear-gradient(45deg, #2196F3, #42A5F5); /* Blue */
+    border: 2px solid #1565C0;
+}
+
+.chord-note.c-chord {
+    background: linear-gradient(45deg, #FF9800, #FFB74D); /* Orange */
+    border: 2px solid #E65100;
+}
+
+/* Animation for falling notes */
+@keyframes fall {
+    from {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.8;
+    }
+    to {
+        transform: translateY(500px) scale(1.1); /* Fall down and slightly grow */
+        opacity: 1;
+    }
+}
+
+
+/* Score Section */
+.score-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.score-display {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.score-item {
+    text-align: center;
+}
+
+.score-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    position: relative; /* For score effects */
+}
+
+.score-label {
+    font-size: 0.9em;
+    color: #e0e0e0;
+    margin-top: 5px;
+}
+
+.feedback-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.feedback-display.good {
+    color: #4CAF50;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+}
+
+.feedback-display.perfect {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.feedback-display.miss {
+    color: #f44336;
+    text-shadow: 0 0 10px rgba(244, 67, 54, 0.8);
+}
+
+.feedback-display.wrong {
+    color: #ff9800;
+    text-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+}
+
+/* Music Controls */
+.music-controls {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+}
+
+.tempo-control label {
+    font-weight: bold;
+}
+
+#tempo-slider {
+    width: 100px;
+    accent-color: #6c5ce7;
+}
+
+#tempo-display {
+    font-weight: bold;
+    color: #a29bfe;
+}
+
+.progress-time {
+    color: #fff;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/* Current Chord Display */
+.current-chord-display {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.chord-name {
+    font-size: 4em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.chord-countdown {
+    font-size: 1.2em;
+    color: #fff;
+    opacity: 0.9;
+}
+
+/* Video Container Adjustments */
+#video-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#webcam-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 3px solid #FFD700; /* Added a border for webcam */
+}
+
+#gesture-text {
+    position: absolute; /* Changed to absolute to overlay webcam */
+    bottom: 20px; /* Positioned at the bottom of video container */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem; /* Slightly smaller for better fit */
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.5); /* Semi-transparent background */
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 20; /* Ensure it's on top */
+}
+
+/* Streak effect for score */
+@keyframes streakPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.streak-effect {
+    animation: streakPulse 0.5s ease-in-out;
+}
+
+/* Score effect for points earned */
+@keyframes scorePop {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+.score-effect {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #4CAF50; /* Green for score gain */
+    font-size: 1.5em;
+    font-weight: bold;
+    animation: scorePop 1s forwards;
+    pointer-events: none; /* Allow clicks to pass through */
+    white-space: nowrap;
+}

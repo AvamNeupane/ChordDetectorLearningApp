@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Chord Detector - Phase 2 Play Along</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body class="practice-body">
+    <div class="container">
+        <a href="songs.html" class="back-btn">← Back to Songs</a>
+        
+        <div id="song-info">
+            <h2 id="song-title">🎵 Wonderwall - Oasis</h2>
+            
+            <div class="phase-info">
+                <h3>🎸 Phase 2: Play Along Mode</h3>
+                <p>Play along with the music! Hit the right chords at the right time for points!</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="song-progress">
+                <h3>Song Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                    <div class="progress-text" id="progress-text">0 / 16 chords</div>
+                </div>
+            </div>
+
+            <!-- Guitar Hero Style Timeline -->
+            <div class="guitar-hero-timeline">
+                <div class="timeline-track">
+                    <div class="chord-highway" id="chord-highway"></div>
+                    <div class="hit-zone">
+                        <div class="hit-zone-indicator"></div>
+                        <div class="hit-zone-label">Hit Zone</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Score and Feedback -->
+            <div class="score-section">
+                <div class="score-display">
+                    <div class="score-item">
+                        <div class="score-number" id="current-score">0</div>
+                        <div class="score-label">Score</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-number" id="streak-count">0</div>
+                        <div class="score-label">Streak</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-number" id="accuracy-percent">100%</div>
+                        <div class="score-label">Accuracy</div>
+                    </div>
+                </div>
+                
+                <div class="feedback-display" id="feedback-display">
+                    Ready to rock! 🎸
+                </div>
+            </div>
+
+            <!-- Music Controls -->
+            <div class="music-controls">
+                <button class="control-btn" id="play-pause-btn" onclick="togglePlayPause()">
+                    <span id="play-icon">▶️</span> Play
+                </button>
+                <div class="tempo-control">
+                    <label for="tempo-slider">Tempo: </label>
+                    <input type="range" id="tempo-slider" min="50" max="100" value="80" onchange="changeTempo(this.value)">
+                    <span id="tempo-display">80%</span>
+                </div>
+                <div class="progress-time">
+                    <span id="current-time">0:00</span> / <span id="total-time">3:24</span>
+                </div>
+            </div>
+
+            <!-- Current Chord Display -->
+            <div class="current-chord-display">
+                <div class="chord-name" id="current-chord">G</div>
+                <div class="chord-countdown" id="chord-countdown"></div>
+            </div>
+        </div>
+
+        <button class="start-btn" id="start-btn" onclick="startPlayAlong()">Start Play Along</button>
+        
+        <div id="video-container">
+            <div id="webcam-container"></div>
+            <div id="gesture-text"></div>
+        </div>
+
+        <!-- Audio element for metronome/click track -->
+        <audio id="backing-track" preload="auto" loop>
+            <!-- Using a programmatically generated audio context instead -->
+        </audio>
+    </div>
+
+    <script src="phase2.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitar Chord Detector - Practice Phase 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body class="practice-body">
+    <div class="container">
+        <a href="songs.html" class="back-btn">← Back to Songs</a>
+        
+        <div id="song-info">
+            <h2 id="song-title">🎵 Wonderwall - Oasis</h2>
+            
+            <div class="phase-info">
+                <h3>📚 Phase 1: Learning Mode</h3>
+                <p>The song will pause at each chord change. Play the correct chord to continue!</p>
+            </div>
+
+            <div class="song-progress">
+                <h3>Song Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="chord-count">0</div>
+                        <div class="stat-label">Chords Played</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="accuracy">100%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="time-elapsed">0:00</div>
+                        <div class="stat-label">Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chord-sequence" id="chord-sequence">
+                <!-- Chord sequence will be populated by JavaScript -->
+            </div>
+
+            <div class="current-instruction waiting" id="current-instruction">
+                Click "Start Practice" to begin!
+            </div>
+
+            <div class="success-message" id="success-message">
+                🎉 Great job! You've completed Wonderwall! 🎉
+                <div class="phase-progression">
+                 <p>Ready for the next challenge?</p>
+                <div class="phase-buttons">
+            <button class="phase-btn" onclick="restartPhase1()">🔄 Practice Again</button>
+            <a href="phase2.html" class="phase-btn phase-btn-next">🎸 Try Phase 2: Play Along</a>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <button class="start-btn" id="start-btn" onclick="startPractice()">Start Practice</button>
+        
+        <div id="video-container">
+            <div id="webcam-container"></div>
+            <div id="gesture-text"></div>
+        </div>
+    </div>
+
+    <script src="phase1.js"></script>
+</body>
+</html>
